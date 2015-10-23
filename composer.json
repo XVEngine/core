@@ -1,0 +1,11 @@
+{
+    "name": "xvengine/core",
+    "description": "Core",
+    "authors": [
+        {
+            "name": "Krzysztof Bednarczyk",
+            "email": "admin@bordeux.net"
+        }
+    ],
+    "require": {}
+}

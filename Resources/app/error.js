@@ -147,7 +147,7 @@
             data : this.getData(),
             exception : this.__serializeException(),
             navigator : this.__serializeNavigator(),
-            history : app.services.history.getStack()
+            history : app.service.history.getStack()
         };
         $.post( "/log/register", { data : JSON.stringify(data) });
         return this;

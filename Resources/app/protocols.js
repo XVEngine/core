@@ -20,7 +20,7 @@
      */
     namespace.protocols.service = function(selector) {
         try {
-            var service = eval('app.services.'+selector);
+            var service = eval('app.service.'+selector);
         }
         catch(e){
             return false;

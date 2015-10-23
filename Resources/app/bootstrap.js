@@ -9,7 +9,7 @@
 
     namespace.bootstrap = function (handlers) {
         this.handlers = handlers;
-        app.services.bootstrap = this;
+        app.service.bootstrap = this;
     };
 
     namespace.bootstrap.prototype.config = {};

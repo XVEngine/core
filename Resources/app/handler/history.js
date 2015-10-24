@@ -16,11 +16,11 @@
     namespace.history.prototype.execute = function(operations) {
         
         operations.forEach(function(operation){
-            if(!app.services.history[operation.method]){
+            if(!app.service.history[operation.method]){
                 console.log("Not found method " , operation.method);
                 return;
             }
-            app.services.history[operation.method].apply(app.services.history, operation.arguments);
+            app.service.history[operation.method].apply(app.services.history, operation.arguments);
             
         });
 

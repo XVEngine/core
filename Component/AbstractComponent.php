@@ -51,7 +51,7 @@ abstract class AbstractComponent extends Events implements JsonSerializable {
     public function __construct($id = null) {
         $this->setId($id);
         $this->setParamByRef("attrs", $this->attrs);
-        $this->init();
+        $this->initialize();
     }
 
 

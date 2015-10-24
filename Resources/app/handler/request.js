@@ -101,7 +101,7 @@
     };
     
     namespace.request.prototype.doRequest = function(){
-        var request = app.services.request.create(this.url);
+        var request = app.service.request.create(this.url);
         request.setOptions(this.requestOptions);
         return request.run();
     };

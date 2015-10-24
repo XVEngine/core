@@ -8,7 +8,7 @@
 (function(namespace, app, globals) {
 
     namespace.resolver = function(item) {
-        var resolved = app.services.utils.resolver.create(item.id);
+        var resolved = app.service.utils.resolver.create(item.id);
         this.promise = this.parseHandler(item.handlers).then(function(){
             return resolved;
         });

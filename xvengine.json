@@ -1,8 +1,17 @@
 {
   "src" : {
-    "scss" : {
-      "files" : "Resources/scss/head/**/*.scss",
-      "priority" : 100
-    }
+    "scss" : [
+      {
+        "files" : "Resources/scss/head/**/*.scss",
+        "priority" : 100
+      },
+      {
+        "files" : "Resources/scss/core/**/*.scss",
+        "priority" : 99
+      },
+      {
+        "files" : "Resources/scss/default/**/*.scss"
+      }
+    ]
   }
 }

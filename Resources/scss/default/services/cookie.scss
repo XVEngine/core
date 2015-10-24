@@ -1,0 +1,17 @@
+ec-cookie {
+    display: block;
+    position: fixed;
+    bottom: 0px;
+    left:0px;
+    right:0px;
+    padding: 15px;
+    background: rgba(0,0,0, 0.8);
+    color: #FFF;
+    transition: bottom 1s ease;
+    text-align: center;
+    z-index: 1000;
+    
+    &.hide {
+        bottom: -100%;
+    }
+}

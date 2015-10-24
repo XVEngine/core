@@ -1,0 +1,27 @@
+xv-tips {
+  width: 0px;
+  height: 0px;
+  display: block;
+
+  > div {
+    position: fixed;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.8);
+    color: #FFF;
+    line-height: 1.1em;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid $border-color;
+    font-size: 12px;
+    text-transform: uppercase;
+    opacity: 0;
+    z-index: 800;
+    transition: opacity 0.3s ease;
+    text-align: center;
+
+    &.show {
+      opacity: 1;
+    }
+  }
+
+}

@@ -1,9 +1,14 @@
 (function(src, filepath) {
-    var className = filepath.substr("public_build/app/".length);
+
+
+    var className = filepath.split("/app/").pop(); //this must be done better
+
+
     className = className.substr(0, className.length-3);
     var splited = className.split('/');
     var __CLASS__ = "app."+splited.join('.');
     splited.pop();
+
     className = splited.join('.');
     
     var __ARGUMENT_LIST__ = (className ? "app.namespace('"+className+"')" : "app" )+", app, window";

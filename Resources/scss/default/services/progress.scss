@@ -1,0 +1,94 @@
+services > xv-progress {
+    display: block;
+    position: fixed;
+    top:0px;
+    left:0px;
+    bottom:0px;
+    right:0px;
+    background: rgba($main-color, 0.5);
+    opacity: 0;
+    z-index:9999;
+    transition : opacity 300ms linear;
+    pointer-events: none;
+
+    &.transparent {
+      background: rgba($main-color, 0.0);
+    }
+
+
+    &.black {
+      //background: rgba($main-color, 0.6);
+    }
+
+    &.show {
+        pointer-events: auto;
+        opacity: 1;
+    }
+
+    input {
+      opacity: 0;
+      outline: 0px;
+      :focus {
+        outline: 0px;
+      }
+      position: absolute;
+      top: 5%;
+    }
+
+    > div {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      svg {
+        .fillColor {
+          fill: $main-color2;
+        }
+      }
+    }
+
+  &.progress {
+
+    .percent {
+      text-align: center;
+      color: #FFF;
+      width: 100%;
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+
+    .text {
+      text-align: center;
+      color: #FFF;
+      height: 20px;
+    }
+
+
+    div.progress {
+      position: relative;
+
+      $height: 15px;
+      width: 300px;
+      height: $height;
+      border-bottom: 2px solid rgba(#FFF, 0.7);
+
+      > * {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+      }
+
+      > div.status {
+        background: #FFF;
+        right: auto;
+        width: 0px;
+      }
+
+    }
+
+  }
+}

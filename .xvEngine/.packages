@@ -1,0 +1,34 @@
+[
+    {
+        "package": "C:\\Projekty\\XVEngine\\Core\\vendor\/symfony\/event-dispatcher",
+        "xvEngine": []
+    },
+    {
+        "package": "C:\\Projekty\\XVEngine\\Core\\vendor\/symfony\/filesystem",
+        "xvEngine": []
+    },
+    {
+        "package": "C:\\Projekty\\XVEngine\\Core\\vendor\/symfony\/config",
+        "xvEngine": []
+    },
+    {
+        "package": "C:\\Projekty\\XVEngine\\Core\\vendor\/henrikbjorn\/lurker",
+        "xvEngine": []
+    },
+    {
+        "package": "C:\\Projekty\\XVEngine\\Core\\vendor\/symfony\/process",
+        "xvEngine": []
+    },
+    {
+        "package": "C:\\Projekty\\XVEngine\\Core\\vendor\/symfony\/console",
+        "xvEngine": []
+    },
+    {
+        "package": "C:\\Projekty\\XVEngine\\Core\\vendor\/symfony\/finder",
+        "xvEngine": []
+    },
+    {
+        "package": "C:\\Projekty\\XVEngine\\Core\\vendor\/codegyre\/robo",
+        "xvEngine": []
+    }
+]

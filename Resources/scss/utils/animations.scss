@@ -1,0 +1,13 @@
+.animation-blink {
+    transition : background-color 0.5s ease;
+
+
+  &.blink-color {
+    color: $main-color2;
+  }
+}
+
+.animation-fadeto {
+    transition : opacity 0.4s ease;
+}
+

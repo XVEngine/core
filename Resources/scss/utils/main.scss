@@ -1,0 +1,189 @@
+html, button, input, select, textarea {
+  color: #4b4b4b;
+}
+
+::selection, ::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+a {
+  color: $main-color2;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+}
+
+img {
+  vertical-align: middle;
+  background: transparent;
+}
+
+fieldset {
+  border: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  line-height: 1.1em;
+  margin: 10px;
+}
+
+ul {
+  list-style-position: inside;
+
+}
+
+html {
+  height: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background: $background-color;
+  min-width: $min-site-width;
+}
+
+body {
+  height: 100%;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-weight: 500;
+  color: #101010;
+  font-size: 16px;
+  line-height: 1.4;
+
+}
+
+select {
+  -moz-appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select, input, textarea {
+  border-color: #dfdfdf;
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  border-radius: 0;
+}
+
+input {
+  height: 50px;
+  outline: none;
+  padding: 0 15px;
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-appearance: none;
+}
+
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+:focus {
+  outline: none;
+}
+
+::-moz-focus-inner {
+  border: 0;
+}
+
+::-webkit-input-placeholder {
+  color: $border-color;
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+:-moz-placeholder {
+  color: $border-color;
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+::-moz-placeholder {
+  color: $border-color;
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+:-ms-input-placeholder {
+  color: $border-color;
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+.xv-placeholder {
+  color: $border-color;
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+iframe {
+  border: 0px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1em;
+  color: $main-color;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+h2 {
+  font-size: 15px;
+  font-weight: 900;
+  color: $main-color;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+h3 {
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.touch-only {
+  display: none;
+}
+
+html.touch {
+  .no-touch {
+    display: none;
+  }
+  .touch-only {
+    display: block;
+  }
+}
+
+x-a {
+  display: inline;
+  cursor: pointer;
+}

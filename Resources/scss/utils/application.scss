@@ -1,0 +1,101 @@
+html {
+  &.animated {
+    overflow: hidden;
+  }
+
+  body {
+    min-height: 100%;
+    height: auto;
+    overflow-y: scroll;
+  }
+}
+
+application {
+  display: block;
+  min-height: 100%;
+
+  > page {
+    display: block;
+    width: 100%;
+    min-height: 100%;
+    background-color: inherit;
+
+    &.rendering {
+      overflow: hidden;
+      height: 1px;
+    }
+
+    &.animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: auto;
+      width: auto;
+      transition: transform 0.35s linear, opacity 0.35s linear;
+      overflow: hidden;
+    }
+
+    &.previous {
+      &.run {
+        transform: translateY(0%);
+      }
+    }
+
+    &.previous-opposit {
+      z-index: 110;
+      &.run {
+        transform: translateY(100%);
+      }
+    }
+
+    &.none {
+      &.run {
+        transform: translateY(0%);
+      }
+    }
+
+    &.none-opposit {
+      z-index: 110;
+      &.run {
+        transform: translateY(0%);
+      }
+    }
+
+    &.up {
+      &.run {
+        transform: translateY(100%);
+      }
+    }
+
+    &.down {
+      &.run {
+        transform: translateY(-100%);
+      }
+    }
+
+    &.right {
+      &.run {
+        transform: translateX(-100%);
+      }
+    }
+
+    &.left {
+      &.run {
+        transform: translateX(100%);
+      }
+    }
+
+    &.active {
+      z-index: 100;
+    }
+
+  }
+
+  > services {
+    display: block;
+    height: 0px;
+  }
+
+}

@@ -10,27 +10,30 @@ class Script
 {
 
     const TYPE_NAME = "xvengine-bundle";
+    const SELF_NAME = "xvengine/core";
 
 
     /**
      * @author Krzysztof Bednarczyk
      * @param Event $event
      */
-    public static function watch(Event $event){
+    public static function build(Event $event){
         $composer = $event->getComposer();
-
 
 
         $repos = $composer->getRepositoryManager()->getLocalRepository();
         $installationManager = $composer->getInstallationManager();
 
 
+
         $packages = [];
+
+        $corePackage = null;
+
         /**
          * @var $package CompletePackage
          */
         foreach($repos->getPackages() as $package){
-
             if($package->getType() !== self::TYPE_NAME){
                 $keywords = $package->getKeywords();
                 if(!$keywords){
@@ -51,20 +54,18 @@ class Script
             }
 
 
-
-            var_dump($package->getKeywords());
-
             $installPath = $installationManager->getInstallPath($package);
 
             $configPath = $installPath.DIRECTORY_SEPARATOR."xvengine.json";
 
             $packageConfig = [];
             if(file_exists($configPath)){
-                $packageConfig = json_encode(file_get_contents($configPath));
+                $packageConfig = json_decode(file_get_contents($configPath), true);
             }
 
 
             $packages[] = [
+                "name" => $package->getName(),
                 "package" => $installPath,
                 "xvEngine" => self::getDefaultConfig($packageConfig)
             ];
@@ -84,7 +85,13 @@ class Script
 			exec('attrib +H ' . escapeshellarg($xvDir), $res);
 		}
 
-        file_put_contents($xvDir.DIRECTORY_SEPARATOR.".packages", json_encode($packages, JSON_PRETTY_PRINT));
+
+        $data  = [
+            "packages" => $packages
+        ];
+
+
+        file_put_contents($xvDir.DIRECTORY_SEPARATOR."packages.json", json_encode($data, JSON_PRETTY_PRINT));
     }
 
 
@@ -95,7 +102,11 @@ class Script
      */
     public static function getDefaultConfig(array $config = []){
         return array_replace_recursive([
-
+            "src" => [
+                "app" => "Resources/app/**/*.js",
+                "scss" => "Resources/scss/**/*.scss",
+                "vendor" => "Resources/vendor/**/*.js",
+            ]
         ], $config);
     }
 }

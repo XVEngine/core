@@ -1,0 +1,292 @@
+@for $i from 1 through 30 {
+
+
+    .m#{$i*10}px {
+        margin: 10px * $i;
+    }
+
+    .ml#{$i*10}px {
+        margin-left: 10px * $i;
+    }
+    .mr#{$i*10}px {
+        margin-right: 10px * $i;
+    }
+    
+    .mb#{$i*10}px {
+        margin-bottom: 10px * $i;
+    }
+    
+    .mb-#{$i*10}px {
+        margin-bottom: -10px * $i;
+    }
+    
+    
+    .mt#{$i*10}px {
+        margin-top: 10px * $i;
+    }
+    
+    
+    .mt-#{$i*10}px {
+        margin-top: -10px * $i;
+    }
+    
+    .p#{$i*10}px {
+        padding: 10px * $i;
+    }
+    
+    .pl#{$i*10}px {
+        padding-left: 10px * $i;
+    }
+    
+    .pr#{$i*10}px {
+        padding-right: 10px * $i;
+    }
+    
+    .pb#{$i*10}px {
+        padding-bottom: 10px * $i;
+    }
+    
+    .pt#{$i*10}px {
+        padding-top: 10px * $i;
+    }
+    .h#{$i*10}px {
+        height: 10px * $i;
+    }
+    
+    .h#{$i*10} {
+        height: 10% * $i ;
+    }
+    
+    
+    .minh#{$i*10}px {
+        min-height: 10px * $i;
+    }
+    
+    .minh#{$i*10} {
+        min-height: 10% * $i;
+    }
+    
+    
+    .maxh#{$i*10}px {
+        min-height: 10px * $i;
+    }
+    
+    .maxh#{$i*10} {
+        min-height: 10% * $i;
+    }
+    
+    .w#{$i*10}px {
+        width: 10px * $i;
+    }
+    
+    .w#{$i*10} {
+        width: 10% * $i;
+    }
+    
+    
+    .minw#{$i*10}px {
+        min-width: 10px * $i;
+    }
+    
+    .minw#{$i*10} {
+        min-width: 10% * $i;
+    }
+    
+    .maxw#{$i*10}px {
+        max-width: 10px * $i;
+    }
+    
+    .maxw#{$i*10} {
+        max-width: 10% * $i;
+    }
+    
+}
+
+.m5px {
+  margin: 5px
+}
+.mt5px {
+  margin-top: 5px
+}
+.mb5px {
+  margin-bottom: 5px
+}
+.ml5px {
+  margin-left: 5px
+}
+.mr5px {
+  margin-right: 5px
+}
+
+
+.flex {
+    display: flex;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.block {
+  display: block !important;
+}
+
+
+.flex-none {
+    flex: none !important;
+}
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-end {
+    justify-content : flex-end;
+}
+
+.flex-nowrap {
+    flex-wrap: nowrap !important;
+}
+
+.flex-none {
+    justify-content : flex-end;
+}
+
+.flex-align-center {
+    align-items: center;
+}
+
+.ta-center, .text-align-center {
+    text-align:center;
+}
+
+.ta-left {
+    text-align: left;
+}
+
+.ta-right {
+    text-align: right;
+}
+
+.cpointer {
+    cursor: pointer;
+}
+.fwbold {
+    font-weight: bold;
+}
+.fwnormal {
+    font-weight: normal;
+}
+
+
+.dnone {
+    display: none !important;
+}
+
+.float-right {
+    float: right;
+}
+.float-left {
+    float: left;
+}
+
+.margin-auto {
+    margin: auto;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.hidden { 
+    display: none !important; 
+    visibility: hidden;
+}
+
+.transparent {
+    opacity: 0;
+}
+
+.relative { 
+    position:relative; 
+    height:100%; 
+}
+
+.border-box {
+    box-sizing: border-box;
+}
+
+.color-inherit {
+  color: inherit;
+}
+.color-main-color {
+  color: $main-color;
+}
+
+.color-main-color-2 {
+  color: $main-color2;
+}
+
+s, strike {
+  text-decoration:line-through;
+}
+.red {
+  color: red;
+}
+
+.row {
+  margin: 0 (-($gutterWidth/2)+px);
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.col {
+  float: left;
+}
+
+@for $i from 1 through $columns  {
+  .col-xs#{-$i} {
+    $width: $i / $columns * 100%;
+    width: $width;
+    padding-left: $gutterWidth/2 +px;
+    padding-right: $gutterWidth/2 +px;
+  }
+}
+
+@mixin full-width {
+  float: none;
+  width: 100%;
+  clear: both;
+}
+
+@media (min-width: 640px) {
+  @for $i from 1 through $columns  {
+    .col-sm#{-$i} {
+      $width: $i / $columns * 100%;
+      width: $width;
+      padding-left: $gutterWidth/2 +px;
+      padding-right: $gutterWidth/2 +px;
+    }
+  }
+}
+
+@media (min-width: 960px) {
+  @for $i from 1 through $columns  {
+    .col-md#{-$i} {
+      $width: $i / $columns * 100%;
+      width: $width;
+      padding-left: $gutterWidth/2 +px;
+      padding-right: $gutterWidth/2 +px;
+    }
+  }
+}
+
+.pointer-events-auto {
+  pointer-events: auto !important;
+}

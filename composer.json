@@ -21,7 +21,7 @@
 
 	
     "scripts": {
-        "xv-watch" :  "XVEngine\\Core\\Composer\\Script::watch",
-        "post-autoload-dump" :  "XVEngine\\Core\\Composer\\Script::watch"
+        "xv-build" :  "XVEngine\\Core\\Composer\\Script::build",
+        "post-update-cmd" :  "XVEngine\\Core\\Composer\\Script::build"
     }
 }

@@ -2,6 +2,7 @@
     "name": "xvengine/core",
     "description": "Core",
     "license": "MIT",
+	"type" : "xvengine-bundle",
     "authors": [
         {
             "name": "Krzysztof Bednarczyk",
@@ -10,11 +11,16 @@
         }
     ],
     "require": {
-
+		"codegyre/robo": "*"
     },
     "autoload": {
-        "psr-0": {
-            "XVEngine\\Core" : ""
+        "psr-4": {
+            "XVEngine\\Core\\" : ""
         }
+    },
+
+	
+    "scripts": {
+        "xv-watch" :  "XVEngine\\Core\\Composer\\Script::watch"
     }
 }

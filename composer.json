@@ -21,6 +21,8 @@
 
 	
     "scripts": {
-        "xv-watch" :  "XVEngine\\Core\\Composer\\Script::watch"
+        "xv-watch" :  "XVEngine\\Core\\Composer\\Script::watch",
+        "post-install-cmd" :  "XVEngine\\Core\\Composer\\Script::watch",
+        "post-update-cmd" :  "XVEngine\\Core\\Composer\\Script::watch",
     }
 }

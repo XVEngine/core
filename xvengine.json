@@ -1,1 +1,8 @@
-{}
+{
+  "src" : {
+    "scss" : {
+      "files" : "Resources/scss/head/**/*.scss",
+      "priority" : 100
+    }
+  }
+}

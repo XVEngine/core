@@ -28,12 +28,12 @@
         
         this.handlers.forEach(function(item) {
             var handlerName = item.name;
-            if(!app.handlers[handlerName]){
+            if(!app.handler[handlerName]){
                 console.error("app::handlerParser: Not found  handler "+handlerName);
                 return true;
             }
             worker = worker.then(function(){
-                var event = new app.handlers[handlerName](item);
+                var event = new app.handler[handlerName](item);
                 return event.promise ? event.promise : true;
             });
         });

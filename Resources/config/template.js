@@ -167,7 +167,7 @@ var application = {};
     };
 
 
-    //--scripts--//
+//--scripts--//
 
 
 })(application);

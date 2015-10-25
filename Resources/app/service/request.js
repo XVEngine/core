@@ -49,7 +49,7 @@
 
     namespace.request.prototype.create = function (url) {
         var self = this;
-        var request = new app.classes.request(url);
+        var request = new app.core.request(url);
         Object.keys(this.headers).forEach(function(key){
             request.addHeader(key, self.headers[key]);
         });

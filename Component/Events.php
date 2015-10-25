@@ -17,7 +17,7 @@ class Events {
      * Events list
      * @var AbstractHandler[]
      */
-    public $eventHandlers = [];
+    protected $eventHandlers = [];
 
 
 
@@ -39,7 +39,8 @@ class Events {
         if(!($handler instanceof AbstractHandler)){
             throw new \InvalidargumentException();
         }
-        
+
+
         if (!isset($this->eventHandlers[$eventName])) {
             $this->eventHandlers[$eventName] = [];
         }

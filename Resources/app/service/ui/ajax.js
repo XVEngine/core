@@ -56,7 +56,7 @@
         return self.resolve().then(function () {
             return self.createRequest(url)
                 .setOptions(options || {})
-                .addHeader("X-XV-Source", "services.ui.ajax")
+                .addHeader("X-XV-Source", "service.ui.ajax")
                 .run();
         });
     };
@@ -80,7 +80,7 @@
      */
     namespace.ajax.prototype.createRequest = function (url) {
         var request = app.service.request.create(url);
-        request.addHeader("X-XV-Source", "services.ui.ajax");
+        request.addHeader("X-XV-Source", "service.ui.ajax");
         return request;
     };
 

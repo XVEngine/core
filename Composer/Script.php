@@ -13,16 +13,24 @@ class Script
     const SELF_NAME = "xvengine/core";
 
 
+    protected static $installationManager;
+
+    protected static $composer;
+
+
+    protected static $packagesList;
+
+
     /**
      * @author Krzysztof Bednarczyk
      * @param Event $event
      */
     public static function build(Event $event){
-        $composer = $event->getComposer();
 
+        self::$composer = $event->getComposer();
 
-        $repos = $composer->getRepositoryManager()->getLocalRepository();
-        $installationManager = $composer->getInstallationManager();
+        self::$packagesList = self::$composer->getRepositoryManager()->getLocalRepository()->getPackages();
+        self::$installationManager = self::$composer->getInstallationManager();
 
 
 
@@ -30,49 +38,25 @@ class Script
 
         $corePackage = null;
 
+
         /**
          * @var $package CompletePackage
          */
-        foreach($repos->getPackages() as $package){
-            if($package->getType() !== self::TYPE_NAME){
-                $keywords = $package->getKeywords();
-                if(!$keywords){
-                    continue;
-                }
+        foreach(self::$packagesList as $package){
 
-                $hasKeyword = false;
-                foreach($keywords as $keyword){
-                    if($keyword == self::TYPE_NAME){
-                        $hasKeyword = true;
-                        break;
-                    }
-                }
-
-                if(!$hasKeyword){
-                    continue;
-                }
+            if($item = self::generatePackageEntry($package)){
+                $packages[] = $item;
             }
 
+        }
 
-            $installPath = $installationManager->getInstallPath($package);
-
-            $configPath = $installPath.DIRECTORY_SEPARATOR."xvengine.json";
-
-            $packageConfig = [];
-            if(file_exists($configPath)){
-                $packageConfig = json_decode(file_get_contents($configPath), true);
-            }
-
-
-            $packages[] = [
-                "name" => $package->getName(),
-                "package" => $installPath,
-                "xvEngine" => self::getDefaultConfig($packageConfig)
-            ];
+        if($item = self::generatePackageEntry(self::$composer->getPackage(), true)){
+            $packages[] = $item;
         }
 
 
-        $xvDir = realpath($event->getComposer()->getConfig()->get('archive-dir')).DIRECTORY_SEPARATOR.'.xvEngine';
+
+        $xvDir = realpath(self::$composer->getConfig()->get('archive-dir')).DIRECTORY_SEPARATOR.'.xvEngine';
 
         if(!file_exists($xvDir)){
             mkdir($xvDir);
@@ -92,6 +76,52 @@ class Script
 
 
         file_put_contents($xvDir.DIRECTORY_SEPARATOR."packages.json", json_encode($data, JSON_PRETTY_PRINT));
+    }
+
+
+
+    public static function generatePackageEntry($package, $isRoot = false){
+        if($package->getType() !== self::TYPE_NAME){
+            $keywords = $package->getKeywords();
+            if(!$keywords){
+                return null;
+            }
+
+            $hasKeyword = false;
+            foreach($keywords as $keyword){
+                if($keyword == self::TYPE_NAME){
+                    $hasKeyword = true;
+                    break;
+                }
+            }
+
+            if(!$hasKeyword){
+                return null;
+            }
+        }
+
+        $installPath = self::$installationManager->getInstallPath($package);
+
+        if($isRoot){
+            $installPath = realpath(self::$composer->getConfig()->get('archive-dir'));
+        }
+
+
+        $configPath = $installPath.DIRECTORY_SEPARATOR."xvengine.json";
+
+        $packageConfig = [];
+        if(file_exists($configPath)){
+            $packageConfig = json_decode(file_get_contents($configPath), true);
+        }else{
+
+        }
+
+
+        return  [
+            "name" => $package->getName(),
+            "package" => $installPath,
+            "xvEngine" => self::getDefaultConfig($packageConfig)
+        ];
     }
 
 

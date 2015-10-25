@@ -60,6 +60,14 @@ class PageHandler extends AbstractHandler {
         return $this;
     }
 
+    /**
+     * @author Krzysztof Bednarczyk
+     * @return AbstractComponent
+     */
+    public function getComponent(){
+        return $this->component;
+    }
+
 
     /**
      * Setting page id

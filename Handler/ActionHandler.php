@@ -3,6 +3,7 @@
 namespace XVEngine\Core\Handler;
 
 use InvalidArgumentException;
+use XVEngine\Core\Component\AbstractComponent;
 
 
 /**

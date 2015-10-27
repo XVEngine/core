@@ -12,6 +12,16 @@
       {
         "files" : "Resources/scss/default/**/*.scss"
       }
+    ],
+    "vendor" : [
+      {
+        "files" : "Resources/vendor/head/**/*.js",
+        "priority" : 100
+      },
+      {
+        "files" : "Resources/vendor/bottom/**/*.js",
+        "priority" : 99
+      }
     ]
   }
 }

@@ -115,7 +115,7 @@ var application = {};
                 }
 
                 _traits.forEach(function (trait) {
-
+                    //here should be traits!
                 });
             }
 

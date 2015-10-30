@@ -10,8 +10,8 @@ html, button, input, select, textarea {
 }
 
 * {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
@@ -66,12 +66,6 @@ html {
 
 body {
   height: 100%;
-  font-family: 'Alegreya Sans', sans-serif;
-  font-weight: 500;
-  color: #101010;
-  font-size: 16px;
-  line-height: 1.4;
-
 }
 
 select {
@@ -147,7 +141,7 @@ input {
 }
 
 iframe {
-  border: 0px;
+  border: 0;
 }
 
 h1 {

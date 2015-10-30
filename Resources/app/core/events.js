@@ -15,6 +15,11 @@
     namespace.events.prototype._events = {};
 
 
+    namespace.events.prototype.setEvents = function (events) {
+        this._events = events;
+        return this;
+    };
+
     namespace.events.prototype.on = function (eventName, handlers) {
         var self  = this;
         if(! ( handlers instanceof Array)){

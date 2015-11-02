@@ -16,7 +16,7 @@
         return this.data[name]
     };
 
-    namespace.variables.prototype.set = function (value) {
+    namespace.variables.prototype.set = function (name, value) {
         this.data[name] = value;
         return this;
     };

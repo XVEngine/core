@@ -96,7 +96,7 @@ abstract class AbstractComponent extends Events implements JsonSerializable {
      * @param string $componentName
      * @return  $this
      */
-    public function setComponentName($componentName)
+    protected function setComponentName($componentName)
     {
         $this->componentName = $componentName;
         return $this;

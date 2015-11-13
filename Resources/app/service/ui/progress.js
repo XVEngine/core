@@ -8,7 +8,7 @@
 (function(namespace, app, globals) {
 
 
-    
+
     app.registerService(function() {
         namespace.progress = new namespace.progress();
     }, -100);
@@ -17,8 +17,8 @@
     namespace.progress = function() {
         this.initObject();
     };
-    
-    
+
+
 
     namespace.progress.prototype.getSVG = function() {
         var tmplString = app.utils.getString(function () {
@@ -44,22 +44,41 @@
         });
         return $(tmplString);
     };
-   
-   
 
-    namespace.progress.prototype.initObject = function() {
-        this.$element = $("<xv-progress>");
-        this.$element.appendTo("application > services");
-        var $svgContainer = $("<div>");
-        this.$unblur = $("<input>").attr("type", "text");
-        this.$element.attr("tabindex", "-1");
-        $svgContainer.append(this.getSVG());
-        $svgContainer.append(this.$unblur);
-        this.$element.append($svgContainer);
+
+
+    namespace.progress.prototype.getTemplate = function() {
+        return $(app.utils.getString(function () {
+            /**<string>
+             <xv-progress tabindex="-1">
+                <div>
+                    <div>
+
+                        <div class="svg"></div>
+                         <div class="progress">
+                             <div class="text"></div>
+                             <div class="percent"></div>
+                             <div class="progressbar">
+                                <div></div>
+                             </div>
+                         </div>
+                        <input type="text" />
+                    </div>
+                </div>
+             </xv-progress>
+             </string>*/
+        }));
     };
-   
+    namespace.progress.prototype.initObject = function() {
+        this.$element = this.getTemplate();
+        this.$element.appendTo("application > services");
+        this.$progress = this.$element.find(".progress");
+        this.$unblur = this.$element.find("input");
+        this.$element.find(".svg").html(this.getSVG());
+    };
+
    /**
-    * 
+    *
     * @returns {progress_L8.namespace.progress.prototype}
     */
     namespace.progress.prototype.show = function (transparent) {
@@ -76,8 +95,8 @@
      * @returns {namespace.progress}
      */
     namespace.progress.prototype.hide = function () {
-        this.$element.removeClass("show");
-        this.$element.removeClass("transparent");
+        this.$element.removeClass("show transparent progress");
+
         return this;
     };
 
@@ -89,7 +108,21 @@
         return this.$element.is(".show");
     };
 
+    namespace.progress.prototype.setProgressText = function (text) {
+        this.$progress.find(".text").text(text);
+        return true;
+    };
 
+    namespace.progress.prototype.setProgress = function (percent) {
+        if(!this.isShowed()){
+            return false;
+        }
+        this.$element.addClass("progress");
+        this.$progress.find(".percent").text(Math.round(percent*100));
+        this.$progress.find(".progressbar > div").css("width", (percent*100)+"%");
+
+        return true;
+    };
 
     return namespace.progress;
 })(__ARGUMENT_LIST__);

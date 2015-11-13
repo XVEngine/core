@@ -1,10 +1,10 @@
 services > xv-progress {
     display: block;
     position: fixed;
-    top:0px;
-    left:0px;
-    bottom:0px;
-    right:0px;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
     background: rgba($main-color, 0.5);
     opacity: 0;
     z-index:9999;
@@ -16,13 +16,23 @@ services > xv-progress {
     }
 
 
-    &.black {
-      //background: rgba($main-color, 0.6);
-    }
-
     &.show {
         pointer-events: auto;
         opacity: 1;
+    }
+
+    &.progress {
+      > div {
+        > div {
+          svg {
+            display: none;
+          }
+
+          .progress {
+            display: block;
+          }
+        }
+      }
     }
 
     input {
@@ -42,53 +52,44 @@ services > xv-progress {
         justify-content: center;
         align-items: center;
 
-      svg {
-        .fillColor {
-          fill: $main-color2;
+      > div {
+        text-align: center;
+        width: 100%;
+
+        svg {
+          .fillColor {
+            fill: $main-color2;
+          }
+        }
+
+        .progress {
+          display: none;
+          color: #FFF;
+          .percent {
+            font-size: 30px;
+
+            &:after {
+              content: "%";
+            }
+          }
+
+          > div.progressbar {
+            height: 20px;
+            border-bottom: 2px solid rgba(#FFF, 0.7);
+            width: 300px;
+            max-width: 90%;
+            margin: auto;
+
+            > div {
+              width: 20px;
+              background: #FFF;
+              height: 100%;
+            }
+          }
         }
       }
-    }
-
-  &.progress {
-
-    .percent {
-      text-align: center;
-      color: #FFF;
-      width: 100%;
-      font-size: 50px;
-      margin-bottom: 10px;
-    }
-
-    .text {
-      text-align: center;
-      color: #FFF;
-      height: 20px;
-    }
-
-
-    div.progress {
-      position: relative;
-
-      $height: 15px;
-      width: 300px;
-      height: $height;
-      border-bottom: 2px solid rgba(#FFF, 0.7);
-
-      > * {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        bottom: 0px;
-        right: 0px;
-      }
-
-      > div.status {
-        background: #FFF;
-        right: auto;
-        width: 0px;
-      }
 
     }
 
-  }
+
 }

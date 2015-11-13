@@ -25,6 +25,7 @@
         return {
             autorun: false,
             progress: true,
+            progressText: "Uploading...",
             disableErrors : false,
             headers : {
                 "X-XV-Request": 1,
@@ -47,7 +48,7 @@
         }else{
             this.promise = this.get(this.url, this.options.get || {});
         }
-        this.runProgress();
+        this.runProgress(this.promise);
         return this.promise;
     };
 
@@ -69,20 +70,22 @@
         return this;
     };
     
-    /**
-     * 
-     * @param {String} url
-     * @returns {request_L8.namespace.request.prototype|undefined}
-     */
-    namespace.request.prototype.runProgress = function(url){
+
+    namespace.request.prototype.runProgress = function(promise){
         if(!this.options.progress){
             return;
         }
 
         app.service.ui.progress.show();
+        app.service.ui.progress.setProgressText(this.options.progressText);
         this.promise = this.promise.fin(function(){
             app.service.ui.progress.hide();
         });
+
+        promise.progress(function (progress) {
+            app.service.ui.progress.setProgress(progress.percent);
+        });
+
         return this;
     };
     
@@ -254,8 +257,9 @@
         var xhr = new XMLHttpRequest();
         this._xhr = xhr;
         
-        
+        var total = 0;
         xhr.upload.addEventListener("progress", function(rpe){
+            total = rpe.total;
             deferred.notify({
                 event : "request.upload.progress",
                 percent : rpe.loaded / (rpe.total||rpe.loaded||1),
@@ -273,6 +277,12 @@
         }, false);
         
         xhr.addEventListener("load", function(req){
+            deferred.notify({
+                event : "request.upload.progress",
+                percent : 1,
+                total : total,
+                loaded : total
+            });
 
             app.service.utils.functions.parseJson(req.target.responseText).then(function(json){
                 deferred.resolve(json);

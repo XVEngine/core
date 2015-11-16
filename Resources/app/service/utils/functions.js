@@ -63,5 +63,10 @@
         };
     };
 
+
+    namespace.functions.prototype.renderComponent = function(component){
+        return app.utils.buildComponent(component);
+    };
+
     return namespace.functions;
 })(__ARGUMENT_LIST__);

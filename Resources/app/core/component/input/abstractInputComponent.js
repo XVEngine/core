@@ -34,6 +34,9 @@
         this.setHidden(this.params.hidden);
         this.setName(this.params.name);
 
+        this.params.focus && this.setFocus(true);
+
+
         if (this.prepare) {
             this.prepare();
         }
@@ -167,13 +170,13 @@
     };
     
     namespace.abstractInputComponent.prototype.showTip = function(){
-        app.services.ui.tips.show(this.getTipElement());
+        app.service.ui.tips && app.service.ui.tips.show(this.getTipElement());
         return true;
     };
     
     
     namespace.abstractInputComponent.prototype.hideTip = function(){
-        app.services.ui.tips.hide(this.getTipElement());
+        app.service.ui.tips && app.service.ui.tips.hide(this.getTipElement());
         return this;
     };
     
@@ -218,6 +221,11 @@
     };
     
     
+
+    namespace.abstractInputComponent.prototype.setFocus = function(value){
+        this.$input[value ? "focus" : "blur"]();
+        return this;
+    };
 
     namespace.abstractInputComponent.prototype.destroy = function(){
         this.disable();

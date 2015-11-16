@@ -13,6 +13,11 @@ use XVEngine\Core\Handler\AbstractHandler;
  */
 abstract class AbstractComponent extends Events implements JsonSerializable {
 
+
+    const onInsert = "onInsert";
+    const onDestroy = "onDestroy";
+
+
     /**
      *
      * @var mixed[] 

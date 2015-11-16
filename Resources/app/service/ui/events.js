@@ -7,6 +7,20 @@
  */
 (function(namespace, app, globals) {
 
+    var keyCodes = {
+        KEY_BACKSPACE: 8,
+        KEY_TAB:       9,
+        KEY_RETURN:   13,
+        KEY_ESC:      27,
+        KEY_LEFT:     37,
+        KEY_UP:       38,
+        KEY_RIGHT:    39,
+        KEY_DOWN:     40,
+        KEY_DELETE:   46
+    };
+
+
+
     app.registerService(function() {
         namespace.events = new namespace.events();
     });
@@ -16,8 +30,11 @@
         this.runElementResizeEvent();
         this.runScrollEvent();
         this.onInsertEvent();
-        this.onEscEvent();
+        this.initEvents();
     };
+
+
+
 
     namespace.events.prototype.runElementResizeEvent = function() {
         var self = this;
@@ -77,17 +94,19 @@
         
     };
 
-    namespace.events.prototype.onEscEvent = function() {
-        $(window).bind('keydown', 'esc', function(){
-            $(".event-esc").trigger("event-esc");
-        });
-
-        $(window).bind('keydown', 'right', function(){
-            $(".event-right").trigger("event-right");
-        });
-
-        $(window).bind('keydown', 'left', function(){
-            $(".event-left").trigger("event-left");
+    namespace.events.prototype.initEvents = function() {
+        $(window).bind('keydown', function(e){
+            switch(e.keyCode){
+                case keyCodes.KEY_ESC:
+                    $(".event-esc").trigger("event-esc");
+                    break;
+                case keyCodes.KEY_RIGHT:
+                    $(".event-right").trigger("event-right");
+                    break;
+                case keyCodes.KEY_LEFT:
+                    $(".event-left").trigger("event-left");
+                    break;
+            }
         });
 
     };

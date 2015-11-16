@@ -123,5 +123,15 @@ abstract class AbstractInputComponent  extends AbstractComponent {
         $this->setParam("name", $name);
         return $this;
     }
+
+    /**
+     * @author Krzysztof Bednarczyk
+     * @param string $name
+     * @return $this
+     */
+    public function setFocus($value) {
+        $this->setParam("focus", $value);
+        return $this;
+    }
     
 }

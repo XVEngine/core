@@ -11,6 +11,9 @@
       },
       {
         "files" : "Resources/scss/default/**/*.scss"
+      },
+	  {
+        "files" : "Resources/vendor/**/*.scss"
       }
     ],
     "vendor" : [

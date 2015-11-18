@@ -63,11 +63,19 @@
         },
         "isPositive": function (item) {
             return Q.spread([this.getValue(item.param1)], function (param1) {
+                if(param1 === "0"){
+                    param1 = 0;
+                }
+
                 return !!param1;
             });
         },
         "isNegative": function (item) {
             return Q.spread([this.getValue(item.param1)], function (param1) {
+                if(param1 === "0"){
+                    param1 = 0;
+                }
+
                 return !param1;
             });
         },

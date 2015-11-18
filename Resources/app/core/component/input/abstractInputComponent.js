@@ -122,7 +122,7 @@
 
         var result = !this.validateErros.length;
 
-        if(result || value.length == 0){
+        if(result || !value || value.length == 0){
             this.$element.addClass("validated").removeClass("invalidated");
         }else{
             this.$element.addClass("invalidated").removeClass("validated");
@@ -205,7 +205,6 @@
         if(this._disable){
             return false;
         }
-        
         return this.trigger("onInput");
     };
 

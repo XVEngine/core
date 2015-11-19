@@ -518,6 +518,10 @@
         return fn( data );
     };
 
+    namespace.utils.isArray = function(arr){
+        return $.isArray(arr);
+    };
+
 
 
     return namespace.utils;

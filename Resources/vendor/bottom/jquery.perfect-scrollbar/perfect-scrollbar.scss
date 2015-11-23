@@ -2,6 +2,7 @@
 $ps-rail-hover: #eee;
 $ps-bar-default: #aaa;
 $ps-bar-hover: #999;
+$ps-size: 12px;
 
 
 // Scrollbar mixins
@@ -61,24 +62,24 @@ $ps-bar-hover: #999;
   >.ps-scrollbar-x-rail {
     @include scrollbar-rail-default;
     bottom: 3px; /* there must be 'bottom' for ps-scrollbar-x-rail */
-    height: 8px;
+    height: $ps-size;
 
     >.ps-scrollbar-x {
       @include scrollbar-default;
       bottom: 0; /* there must be 'bottom' for ps-scrollbar-x */
-      height: 8px;
+      height: $ps-size;
     }
   }
 
   >.ps-scrollbar-y-rail {
     @include scrollbar-rail-default;
     right: 3px; /* there must be 'right' for ps-scrollbar-y-rail */
-    width: 8px;
+    width: $ps-size;
 
     >.ps-scrollbar-y {
       @include scrollbar-default;
       right: 0; /* there must be 'right' for ps-scrollbar-y */
-      width: 8px;
+      width: $ps-size;
     }
   }
 

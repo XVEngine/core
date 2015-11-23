@@ -60,6 +60,20 @@ class MultiHandler extends AbstractHandler {
 
 
     /**
+     * @author Krzysztof Bednarczyk
+     * @param AbstractHandler[] $array
+     * @return $this
+     */
+    public function addHandlers(array $array){
+        foreach($array as $item){
+            $this->addHandler($item);
+        }
+
+        return $this;
+    }
+
+
+    /**
      * Use addHandler method
      * @deprecated
      * @author Krzysztof Bednarczyk

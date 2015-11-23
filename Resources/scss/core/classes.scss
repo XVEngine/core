@@ -102,6 +102,16 @@
     
 }
 
+@for $i from 4 through 8 {
+  .h#{$i*10}px {
+    height: 50px * $i;
+  }
+  .w#{$i*10}px {
+    height: 50px * $i;
+  }
+}
+
+
 .m5px {
   margin: 5px
 }

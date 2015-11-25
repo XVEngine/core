@@ -90,7 +90,11 @@ input {
   padding: 0 15px;
   border-radius: 0;
   box-shadow: none;
-  -webkit-appearance: none;
+
+  &:not([type='checkbox']) {
+    -webkit-appearance: none;
+  }
+
 }
 
 .clearfix:before, .clearfix:after {

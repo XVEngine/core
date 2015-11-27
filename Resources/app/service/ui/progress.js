@@ -75,6 +75,13 @@
         this.$progress = this.$element.find(".progress");
         this.$unblur = this.$element.find("input");
         this.$element.find(".svg").html(this.getSVG());
+
+        var self = this;
+        this.$element.on("click", function(evt){
+            if (evt.ctrlKey){
+                self.hide();
+            }
+        });
     };
 
    /**
